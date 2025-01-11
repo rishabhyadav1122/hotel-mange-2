@@ -41,10 +41,10 @@ def about_us_page():
         unsafe_allow_html=True,
     )
 
-EMAIL_ADDRESS = os.getenv("EMAIL_ADDRESS")
-EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
-st.write(st.secrets["EMAIL"]["EMAIL_ADDRESS"])  # Temporarily display all available keys
-st.write(st.secrets["EMAIL"]["EMAIL_PASSWORD"])  # Temporarily display all available keys
+EMAIL_ADDRESS = st.secrets["EMAIL"]["EMAIL_ADDRESS"]
+EMAIL_PASSWORD = st.secrets["EMAIL"]["EMAIL_PASSWORD"]
+
+ 
 
 def send_email(name, email, message):
     """Send an email with the feedback details."""
