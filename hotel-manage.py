@@ -5,6 +5,7 @@ import smtplib
 from dotenv import load_dotenv
 import os
 from streamlit_option_menu import option_menu
+import re
 
 load_dotenv()
 
@@ -64,6 +65,8 @@ def send_email(name, email, message):
     except Exception as e:
         st.error(f"Error sending email: {e}")
 
+EMAIL_REGEX = r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'
+
 def contact_us_page():
     """Contact Us page where users can send feedback."""
     st.markdown(
@@ -87,10 +90,11 @@ def contact_us_page():
     if st.button("Send Feedback"):
         if not name or not email or not message:
             st.warning("Please fill in all the fields.")
+        elif not re.match(EMAIL_REGEX, email):
+            st.error("Invalid email format. Please enter a valid email.")
         else:
             send_email(name, email, message)
             st.success("Thank you for your feedback!")
-
 st.markdown("""
 <style>
     .record-container {
