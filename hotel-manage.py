@@ -43,6 +43,7 @@ def about_us_page():
 
 EMAIL_ADDRESS = st.secrets["EMAIL_ADDRESS"]
 EMAIL_PASSWORD = st.secrets["EMAIL_PASSWORD"]
+st.write(st.secrets)  # Temporarily display all available keys
 
 def send_email(name, email, message):
     """Send an email with the feedback details."""
