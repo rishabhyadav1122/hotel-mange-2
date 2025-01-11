@@ -43,7 +43,7 @@ def about_us_page():
 
 EMAIL_ADDRESS = os.getenv("EMAIL_ADDRESS")
 EMAIL_PASSWORD = os.getenv("EMAIL_PASSWORD")
-st.write(st.secrets)  # Temporarily display all available keys
+st.write(st.secrets["EMAIL_ADDRESS"])  # Temporarily display all available keys
 
 def send_email(name, email, message):
     """Send an email with the feedback details."""
